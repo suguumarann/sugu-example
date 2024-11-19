@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import HomePage from './pages/home_page';
+import StockDetails from './pages/stock_details';
+import Portfolio from './pages/portfolio';
+import StockPrediction from './pages/stock_prediction';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <Router>
+            <div className="App">
+                <Routes>
+                    <Route path="/" element={<HomePage />} />
+                    <Route path="/stock-details/:stockId" element={<StockDetails />} />
+                    <Route path="/portfolio" element={<Portfolio />} />
+                    <Route path="/stock-prediction/:stockId" element={<StockPrediction />} />
+                </Routes>
+            </div>
+        </Router>
+    );
 }
 
 export default App;
